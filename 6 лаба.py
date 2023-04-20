@@ -49,3 +49,19 @@ def c():
 
 
 c()
+
+def d():
+    fon = Image.open("fon.jpg")
+    mark = Image.open("karac.png")
+
+    width, height = fon.size
+    widm, heim = mark.size
+    if width < widm // 4 or widm > width // 4:
+        widm = int(width // 4)
+        heim = int(widm * heim / mark.width)
+        mark = mark.resize((widm, heim))
+
+    pos = (width - widm, height - height)
+    fon.paste(mark, pos, mark)
+    fon.save("raf.jpg")
+d()
